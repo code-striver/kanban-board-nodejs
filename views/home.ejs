@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>
+            <%=title%>
+        </title>
+        <link rel="stylesheet" href="/css/home.css">
+    </head>
+    <body>
+        <h1>ToDo List</h1>
+        <h2>Create a new account</h2>
+        <form action="/users/sign-up" method="POST">
+            <input type="text" placeholder="type name..." name="name" required>
+            <input type="email" placeholder="type email..."  name="email" required>
+            <br>
+            <br>
+            <input type="password" placeholder="Enter Your password" name="password" required>
+            <input type="password" placeholder="Confirm password" name="confirm_password" required>
+            <br>
+            <br>
+            <input type="submit" value="Sign Up">
+            <h3>
+                OR
+            </h3>
+            <a href="">Sign in With Google</a>
+            <br>
+            <br>
+            <h3 style="display: inline;">Already have an account?</h3>
+            <a href="/users/sign-in-page">Sign In</a>
+        </form>
+    </body>
+</html>

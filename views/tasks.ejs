@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <title>
+            <%=title%>
+        </title>
+        <link rel="stylesheet" href="/css/tasks.css">
+    </head>
+    <body>
+        <!-- header -->
+        <div id="header">
+            <div id="user-name"> Welcome <%=user.name%></div>
+            <div id="sign-out-button"><a href="/users/sign-out" id="log-out">Log Out</a></div>
+        </div>
+        <!-- modal -->
+        <div class="modal" id="todo_form">
+            <div class="header">
+              <div class="title">Add Todo</div>
+              <button class="btn close-modal">&times;</button>
+            </div>
+            <div class="body">
+                <!-- actual form -->
+            <form action="/users/create-task" method="POST">
+            <input type="text" id="todo_input" name="content" required/>
+            <input type="text" name="status" value="No Status">
+            <input type="submit" value="Add Todo" id="todo_submit" />
+            </form>
+            </div>
+          </div>
+          <!-- todo -->
+        <div class="todo-container">
+            <div class="status">
+                <h1>No Status</h1>
+                <button id="add_btn" data-target-modal="#todo_form">+ Add Todo</button>
+                <!-- the task box -->
+                <ul>
+                    <% for(let  task of tasks){%>
+                        <% if(task.status == "No Status"){%>
+                    <li>
+                    <div class="todo" draggable="true"> <%=task.content%> <br>
+                        <small> <%=task.status%> </small>
+                        <form action="/users/update-task" style="display: none;" id="status-update-form" method="POST">
+                            <input type="text" name="status" id="status-update" value="">
+                            <input type="text" name="taskID" value="<%=task._id%>">
+                            <input type="submit" id="status-update-button" value="Hidden Submit Button">
+                        </form>
+                        <span class="close"><a href="/users/delete-task/<%=task._id%>">&times;</a></span>
+                    </div>
+                    </li>
+                    <%} %>
+                    <%} %>
+                </ul>
+                <!-- end -->
+            </div>
+                    
+            <div class="status">
+                <h1>Not Started</h1>
+                <ul>
+                    <% for(let task of tasks){%>
+                        <% if(task.status == "Pending"){%>
+                    <li>
+                    <div class="todo" draggable="true"> <%=task.content%> <br>
+                        <form action="/users/update-task" style="display: none;" id="status-update-form" method="POST">
+                            <input type="text" name="status" id="status-update" value="">
+                            <input type="text" name="taskID" value="<%=task._id%>">
+                            <input type="submit" id="status-update-button" value="Hidden Submit Button">
+                        </form>
+                        
+                        <small> <%=task.status%> </small>
+                    <span class="close"><a href="/users/delete-task/<%=task._id%>">&times;</a></span>
+                    </div>
+                    </li>
+                    <%} %>
+                    <%} %>
+                </ul>
+            </div>
+            <div class="status">
+                <h1>In Progress</h1>
+                <ul>
+                    <% for(let task of tasks){%>
+                        <% if(task.status == "Doing"){%>
+                    <li>
+                    <div class="todo" draggable="true"> <%=task.content%> <br>
+                        <form action="/users/update-task" style="display: none;" id="status-update-form" method="POST">
+                            <input type="text" name="status" id="status-update" value="">
+                            <input type="text" name="taskID" value="<%=task._id%>">
+                            <input type="submit" id="status-update-button" value="Hidden Submit Button">
+                        </form>
+                        
+                        <small> <%=task.status%> </small>
+                        <span class="close"><a href="/users/delete-task/<%=task._id%>">&times;</a></span>
+                    </div>
+                    </li>
+                    <%} %>
+                    <%} %>
+                </ul>
+            </div>
+            <div class="status">
+                <h1>Completed</h1>
+                <ul>
+                    <% for(let task of tasks){%>
+                        <% if(task.status == "Done"){%>
+                    <li>
+                    <div class="todo" draggable="true"> <%=task.content%> <br>
+                        <form action="/users/update-task" style="display: none;" id="status-update-form" method="POST">
+                            <input type="text" name="status" id="status-update" value="">
+                            <input type="text" name="taskID" value="<%=task._id%>">
+                            <input type="submit" id="status-update-button" value="Hidden Submit Button">
+                        </form>
+                        
+                        <small> <%=task.status%> </small>
+                        <span class="close"><a href="/users/delete-task/<%=task._id%>">&times;</a></span>
+                    </div>
+                    </li>
+                    <%} %>
+                    <%} %>
+                </ul>
+            </div>
+        </div>
+        <div id="overlay"></div>
+        
+        <script src="/JavaScript/tasks-front.js"></script>
+</body>
+
+</html>

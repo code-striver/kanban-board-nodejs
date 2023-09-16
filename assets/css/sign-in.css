@@ -1,0 +1,47 @@
+/* Apply styles to the body and form */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  form {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    padding: 20px;
+    width: 300px;
+  }
+  
+  /* Style the form header and inputs */
+  h1 {
+    color: #333;
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Style the submit button */
+  input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Add hover effect to the submit button */
+  input[type="submit"]:hover {
+    background-color: #555;
+  }
+  
